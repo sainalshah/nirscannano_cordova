@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-sitf-scanPlugin" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>NIRNanoScanPlugin</name>
+  <author>Sainal</author>
+  <DESCRIPTION>Connect and manage TI NIRNanoScan device</DESCRIPTION>
+
+  <asset src="www/NIRNanoScanPlugin.js" target="js/NIRNanoScanPlugin.js"/>
+
+  <js-module name="NIRNanoScanPlugin" src="www/NIRNanoScanPlugin.js">
+    <clobbers target="nanoDevice" />
+  </js-module>
+
+  <platform name="android">
+    <dependency id="cordova-plugin-compat" url="https://github.com/apache/cordova-plugin-compat.git"/>
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+      <uses-permission android:name="android.permission.BLUETOOTH"/>
+      <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+      <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="25" />
+      <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+    </config-file>
+    <config-file target="config.xml" parent="/*">
+      <feature name="NanoPlugin">
+        <param name="android-package" value="com.sitf.scanplugin.NanoPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+    <config-file target='AndroidManifest.xml' parent='/manifest/application'>
+      <service android:enabled="true" android:exported="true" android:name="com.kstechnologies.nanoscan.NanoBLEService" />
+    </config-file>
+    <source-file src="src/android/com/sitf/scanplugin/NanoPlugin.java" target-dir="src/com/sitf/scanplugin" />
+    <source-file src="src/android/com/kstechnologies/nirscannanolibrary/SettingsManager.java" target-dir="src/com/kstechnologies/nirscannanolibrary" />
+    <source-file src="src/android/com/kstechnologies/nirscannanolibrary/KSTNanoSDK.java" target-dir="src/com/kstechnologies/nirscannanolibrary" />
+    <source-file src="src/android/com/kstechnologies/nanoscan/NanoBLEService.java" target-dir="src/com/kstechnologies/nanoscan" />
+
+    <source-file src="libs/arm64-v8a/libdlpspectrum.so" target-dir="src/main/jniLibs/arm64-v8a/"/>
+    <source-file src="libs/armeabi/libdlpspectrum.so" target-dir="src/main/jniLibs/armeabi/"/>
+    <source-file src="libs/armeabi-v7a/libdlpspectrum.so" target-dir="src/main/jniLibs/armeabi-v7a/"/>
+    <source-file src="libs/mips/libdlpspectrum.so" target-dir="src/main/jniLibs/mips/"/>
+    <source-file src="libs/mips64/libdlpspectrum.so" target-dir="src/main/jniLibs/mips64/"/>
+    <source-file src="libs/x86/libdlpspectrum.so" target-dir="src/main/jniLibs/x86/"/>
+    <source-file src="libs/x86_64/libdlpspectrum.so" target-dir="src/main/jniLibs/x86_64/"/>
+
+    <source-file src="libs/arm64-v8a/libdlpspectrum.so" target-dir="libs/arm64-v8a/"/>
+    <source-file src="libs/armeabi/libdlpspectrum.so" target-dir="libs/armeabi/"/>
+    <source-file src="libs/armeabi-v7a/libdlpspectrum.so" target-dir="libs/armeabi-v7a/"/>
+    <source-file src="libs/mips/libdlpspectrum.so" target-dir="libs/mips/"/>
+    <source-file src="libs/mips64/libdlpspectrum.so" target-dir="libs/mips64/"/>
+    <source-file src="libs/x86/libdlpspectrum.so" target-dir="libs/x86/"/>
+    <source-file src="libs/x86_64/libdlpspectrum.so" target-dir="libs/x86_64/"/>
+    <source-file src="libs/gson-2.6.2.jar" target-dir="libs/"/>
+    <framework src="com.google.android.gms:play-services-location:10.0.1"/>
+    <framework src="com.android.support:support-v4:+" />
+
+    <resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
+    <resource-file src="src/android/res/values/styles.xml" target="res/values/styles.xml" />
+    <resource-file src="src/android/res/values/dimens.xml" target="res/values/dimens.xml" />
+    <resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
+  </platform>
+
+
+</plugin>
