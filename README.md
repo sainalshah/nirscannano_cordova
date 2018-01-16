@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-A cordova/ ionic plugin to interface with Texas instruments DLP® NIRscan™ Nano Evaluation Module. Currently only supports android. This project uses the code implemented in https://github.com/kstechnologies/NIRScanNano_Android.git
-=======
 A cordova/ ionic plugin to interface with Texas instruments DLP® NIRscan™ Nano Evaluation Module. Currently only supports android. This project uses the code implemented in https://github.com/kstechnologies/NIRScanNano_Android.git.
->>>>>>> d5a60fc... implemented interfacing with android TI NIRScan nano evaluation module
 # License
 
 Software License Agreement (BSD License)
